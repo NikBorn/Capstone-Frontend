@@ -10,7 +10,10 @@ class App extends Component {
       latitude: '',
       longitude: '',
     }
-    // this.setLocationToState = this.setLocationToState.bind(this)
+  }
+
+  fetchLocalConcerts() {
+    
   }
 
   componentDidMount() {
