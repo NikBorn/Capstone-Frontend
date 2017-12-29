@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { getCurrentLocation } from './utils/utils'
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      latitude: '',
+      longitude: '',
+    }
+    // this.setLocationToState = this.setLocationToState.bind(this)
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude});
+    })
+  }
+
   render() {
     return (
       <div className="App">
