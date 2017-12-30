@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getCurrentLocation } from './utils/utils'
+import { getCurrentLocation } from './utils/utils';
+import Client from 'predicthq';
+
+let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'})
+
 
 class App extends Component {
   constructor() {
@@ -10,12 +14,21 @@ class App extends Component {
       latitude: '',
       longitude: '',
     }
-    // this.setLocationToState = this.setLocationToState.bind(this)
+  }
+
+  fetchLocalConcerts(lat, long) {
+    phq.events.search({ rank_level: 5, category: 'concerts', within: `100mi@${lat},${long}` })
+      .then((results) => {
+        console.log(results)
+        for (let event of results)
+          console.info(event.title)
+      })
+      .catch(error => console.log(error))
   }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude});
+      this.setState({ latitude: position.coords.latitude, longitude: position.coords.longitude }, this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude));
     })
   }
 
