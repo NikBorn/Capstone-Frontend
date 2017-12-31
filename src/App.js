@@ -3,18 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import { getCurrentLocation } from './utils/utils';
 import Client from 'predicthq';
+import { setUserLocation } from './actions/index';
+import { connect } from 'react-redux';
 
 let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'});
 
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      latitude: '',
-      longitude: ''
-    };
-  }
 
   fetchLocalConcerts(lat, long) {
     phq.events.search(
@@ -34,12 +29,9 @@ class App extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.setState(
-        { 
-          latitude: position.coords.latitude, 
-          longitude: position.coords.longitude 
-        }, 
-        this.fetchLocalConcerts(this.state.latitude, this.state.longitude));
+      this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude), 
+      this.props.setUserLocation({ latitude: position.coords.latitude, 
+        longitutde: position.coords.longitude});
     });
   }
 
@@ -58,4 +50,19 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUserLocation: (userCoords) => {
+      dispatch(setUserLocation(userCoords));
+    }
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    userCoords: state.userCoords
+  };
+};
+
+export default connect(mapDispatchToProps, mapDispatchToProps)(App);

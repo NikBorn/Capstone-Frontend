@@ -1,6 +1,6 @@
-export const setUserLocation = (location) => {
+export const setUserLocation = (userCoords) => {
   return {
     type: 'SET_USER_LOCATION',
-    location
+    userCoords
   };
 };
