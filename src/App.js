@@ -12,24 +12,35 @@ class App extends Component {
     super();
     this.state = {
       latitude: '',
-      longitude: '',
-    }
+      longitude: ''
+    };
   }
 
   fetchLocalConcerts(lat, long) {
-    phq.events.search({ rank_level: 5, category: 'concerts', within: `100mi@${lat},${long}` })
+    phq.events.search(
+      { 
+        rank_level: 5, 
+        category: 'concerts', 
+        within: `100mi@${lat},${long}` 
+      }
+    )
       .then((results) => {
-        console.log(results)
+        console.log(results);
         for (let event of results)
-          console.info(event.title)
+          console.info(event.title);
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({ latitude: position.coords.latitude, longitude: position.coords.longitude }, this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude));
-    })
+      this.setState(
+        { 
+          latitude: position.coords.latitude, 
+          longitude: position.coords.longitude 
+        }, 
+        this.fetchLocalConcerts(this.state.latitude, this.state.longitude));
+    });
   }
 
   render() {
