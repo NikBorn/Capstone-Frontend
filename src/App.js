@@ -4,7 +4,7 @@ import './App.css';
 import { getCurrentLocation } from './utils/utils';
 import Client from 'predicthq';
 
-let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'})
+let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'});
 
 
 class App extends Component {
