@@ -5,13 +5,14 @@ import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import { connect } from 'react-redux';
 import   Header   from '../Header/Header';
+import PropTypes from 'prop-types';
 
 let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'});
 
 class App extends Component {
 
   fetchLocalConcerts(lat, long) {
-    phq.events.search(
+    return phq.events.search(
       { 
         rank_level: 5, 
         category: 'concerts', 
@@ -19,18 +20,18 @@ class App extends Component {
       }
     )
       .then((results) => {
-        console.log(results);
-        for (let event of results)
-          console.info(event.title);
+        return results.result.results;
       })
       .catch(error => console.log(error));
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude), 
+    navigator.geolocation.getCurrentPosition(async (position) => {
       this.props.setUserLocation({ latitude: position.coords.latitude, 
         longitutde: position.coords.longitude});
+      const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
+      console.log(localConcerts)
+      this.props.setLocationConcerts(localConcerts);
     });
   }
 
@@ -59,6 +60,11 @@ const mapStateToProps = (state) => {
   return {
     userCoords: state.userCoords
   };
+};
+
+App.propTypes = {
+  setUserLocation: PropTypes.func,
+  setLocationConcerts: PropTypes.func
 };
 
 export default connect(mapDispatchToProps, mapDispatchToProps)(App);
