@@ -26,8 +26,8 @@ class App extends Component {
       .catch(error => console.log(error));
   }
 
-  async componentDidMount() {
-    await navigator.geolocation.getCurrentPosition( async (position) => {
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition( async (position) => {
       this.props.setUserLocation({ latitude: position.coords.latitude, 
         longitutde: position.coords.longitude});
       const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
@@ -36,11 +36,12 @@ class App extends Component {
     });
   }
 
+
   render() {
     return (
       <div className="App">
         <Header /> 
-        <EventsContainer /> 
+        <EventsContainer concerts={this.props.locationConcerts}/> 
       </div>
     );
   }
