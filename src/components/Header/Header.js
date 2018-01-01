@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SignInSignUp from '../SignInSignUp/SignInSignUp';
 
 class Header extends Component {
 
@@ -13,7 +14,7 @@ class Header extends Component {
             <li>Find locations </li> 
           </ul>
         </nav> 
-        <button className='sign-in sign-up'>Sign Up or Sign In</button>
+        <SignInSignUp />
       </header>
     );
   }
