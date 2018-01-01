@@ -4,7 +4,7 @@ const userLocation = (state=null, action) => {
     return action.userCoords;
   default: 
     return state;
-  };
+  }
 };
 
 export default userLocation;

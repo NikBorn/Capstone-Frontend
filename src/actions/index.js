@@ -4,3 +4,10 @@ export const setUserLocation = (userCoords) => {
     userCoords
   };
 };
+
+export const setLocationConcerts = (localConcerts) => {
+  return {
+    type: 'Set_Local_Concerts',
+    localConcerts
+  };
+};

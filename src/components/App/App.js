@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { getCurrentLocation } from '../../utils/utils';
 import Client from 'predicthq';
-import { setUserLocation } from '../../actions/index';
+import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import { connect } from 'react-redux';
 import   Header   from '../Header/Header';
 
@@ -48,6 +48,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setUserLocation: (userCoords) => {
       dispatch(setUserLocation(userCoords));
+    },
+    setLocationConcerts: (localConcerts) => {
+      dispatch(setLocationConcerts(localConcerts));
     }
   };
 };
