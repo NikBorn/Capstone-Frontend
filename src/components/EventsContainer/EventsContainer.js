@@ -3,23 +3,23 @@ import EventCards from './EventCards/EventCards';
 
 export default class EventsContainer extends Component {
 
-  // componentWillUpdate(nextProps) {
-  //   if (this.props !== nextProps){
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  componentWillUpdate(nextProps) {
+    if (this.props !== nextProps){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   buildEvents (){
-    this.props.concerts.map(concert => {
-      console.log(concert.title)
-      <h1>Hi</h1>
+    return this.props.concerts.map(concert => {
+      console.log(concert.title);
+      return <EventCards title={concert.title} />
     });
   }
 
   render(){
-    // console.log(this.props.concerts)
+    console.log(this.props.concerts)
     return (
       <section className='events-container'>
       {this.buildEvents()}

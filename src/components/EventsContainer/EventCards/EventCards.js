@@ -6,9 +6,9 @@ export default class EventsCards extends Component {
     console.log(this.props)
     return (
       <article className='event-card'>
-      <h1>
+      <h2>
         {this.props.title}
-      </h1>
+      </h2>
       </article>
     );
   }
