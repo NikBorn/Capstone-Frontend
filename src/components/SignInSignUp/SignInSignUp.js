@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { auth, provider } from '../../firebase';
 
 class SignInSignUp extends Component  {
 
   signIn() {
-    console.log('sign in!')
+    auth.signInWithPopup(provider)
+      .then((result) => {
+
+        console.log(result.user.displayName);
+      });
   }
 
   render() {
