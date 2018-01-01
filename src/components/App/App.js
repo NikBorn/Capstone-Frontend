@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { getCurrentLocation } from './utils/utils';
+import { getCurrentLocation } from '../../utils/utils';
 import Client from 'predicthq';
-import { setUserLocation } from './actions/index';
+import { setUserLocation } from '../../actions/index';
 import { connect } from 'react-redux';
-import   Header   from './Header/Header';
+import   Header   from '../Header/Header';
 
 let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'});
-
 
 class App extends Component {
 
