@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userCoords: state.userCoords,
-    locationConcerts: state.lcoationConcerts
+    locationConcerts: state.locationConcerts
   };
 };
 
