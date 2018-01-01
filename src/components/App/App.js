@@ -5,6 +5,7 @@ import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import { connect } from 'react-redux';
 import   Header   from '../Header/Header';
+import   EventsContainer   from '../EventsContainer/EventsContainer';
 import PropTypes from 'prop-types';
 
 let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'});
@@ -25,8 +26,8 @@ class App extends Component {
       .catch(error => console.log(error));
   }
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(async (position) => {
+  async componentDidMount() {
+    await navigator.geolocation.getCurrentPosition( async (position) => {
       this.props.setUserLocation({ latitude: position.coords.latitude, 
         longitutde: position.coords.longitude});
       const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
@@ -39,6 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header /> 
+        <EventsContainer /> 
       </div>
     );
   }
@@ -58,7 +60,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    userCoords: state.userCoords
+    userCoords: state.userCoords,
+    locationConcerts: state.lcoationConcerts
   };
 };
 
@@ -67,4 +70,4 @@ App.propTypes = {
   setLocationConcerts: PropTypes.func
 };
 
-export default connect(mapDispatchToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
