@@ -58,6 +58,12 @@ class App extends Component {
           ]
           }
         />
+        <Route exact path='/Profile'
+          render={() => [
+            <h1>PROFILE PAGE GOES HERE</h1>
+          ]
+          }
+        />
       </div>
     );
   }
