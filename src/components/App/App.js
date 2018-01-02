@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import   Header   from '../Header/Header';
 import   EventsContainer   from '../EventsContainer/EventsContainer';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'});
 
@@ -38,7 +40,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header /> 
+        <Route path='/'
+          render={() => [
+            <Header /> 
+          ]
+          }
+        />
         <EventsContainer concerts={this.props.locationConcerts}/> 
       </div>
     );
@@ -69,4 +76,5 @@ App.propTypes = {
   setLocationConcerts: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
