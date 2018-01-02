@@ -42,11 +42,22 @@ class App extends Component {
       <div className="App">
         <Route path='/'
           render={() => [
-            <Header /> 
+            <Header />
           ]
           }
         />
-        <EventsContainer concerts={this.props.locationConcerts}/> 
+        <Route exact path='/'
+          render={() => [
+            <EventsContainer concerts={this.props.locationConcerts} />
+          ]
+          }
+        />
+        <Route exact path='/Favorites'
+          render={() => [
+            <h1>FAVORITES PAGE GOES HERE</h1>
+          ]
+          }
+        />
       </div>
     );
   }
