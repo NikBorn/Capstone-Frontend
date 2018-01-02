@@ -13,11 +13,10 @@ export default class EventsContainer extends Component {
 
   buildEvents (){
     return this.props.concerts.map(concert => {
-      // console.log(concert.entities.venues[0].name)
       if (concert.entities === null) {
-        return <EventCards title={concert.title} venue='Not Available' start={concert.start} />;
+        return <EventCards title={concert.title} venue='Not Available' start={concert.start} key={concert.id}/>;
       } else {
-        return <EventCards title={concert.title} venue={concert.entities.venues[0].name} start={concert.start}/>;
+        return <EventCards title={concert.title} venue={concert.entities.venues[0].name} start={concert.start} key={concert.id}/>;
       }
     });
   }

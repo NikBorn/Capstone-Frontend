@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getCurrentLocation } from '../../utils/utils';
 import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import { connect } from 'react-redux';
@@ -31,7 +30,6 @@ class App extends Component {
       this.props.setUserLocation({ latitude: position.coords.latitude, 
         longitutde: position.coords.longitude});
       const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
-      console.log(localConcerts)
       this.props.setLocationConcerts(localConcerts);
     });
   }
