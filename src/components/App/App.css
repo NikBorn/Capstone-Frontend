@@ -23,5 +23,15 @@
 }
 
 
+/* Header CSS */
 
+.header-title {
+  font-size: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.NavBar {
+  display: inline-block;
+}
 
