@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import   Header   from '../Header/Header';
 import   EventsContainer   from '../EventsContainer/EventsContainer';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4'});
 
@@ -38,8 +40,30 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header /> 
-        <EventsContainer concerts={this.props.locationConcerts}/> 
+        <Route path='/'
+          render={() => [
+            <Header />
+          ]
+          }
+        />
+        <Route exact path='/'
+          render={() => [
+            <EventsContainer concerts={this.props.locationConcerts} />
+          ]
+          }
+        />
+        <Route exact path='/Favorites'
+          render={() => [
+            <h1>FAVORITES PAGE GOES HERE</h1>
+          ]
+          }
+        />
+        <Route exact path='/Profile'
+          render={() => [
+            <h1>PROFILE PAGE GOES HERE</h1>
+          ]
+          }
+        />
       </div>
     );
   }
@@ -69,4 +93,5 @@ App.propTypes = {
   setLocationConcerts: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
