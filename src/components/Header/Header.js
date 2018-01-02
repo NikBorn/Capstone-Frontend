@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SignInSignUp from '../SignInSignUp/SignInSignUp';
+import SearchBar from '../SearchBar/SearchBar';
+import NavBar from '../NavBar/NavBar';
 
 class Header extends Component {
 
@@ -7,13 +9,8 @@ class Header extends Component {
     return (
       <header className='header'>
         <h1 className='header-title'>Concert Tracker</h1>
-        <nav className='topNav'>
-          <ul>
-            <li>Find Bands </li> 
-            <li>Find Venues </li> 
-            <li>Find locations </li> 
-          </ul>
-        </nav> 
+        <NavBar />
+        <SearchBar />
         <SignInSignUp />
       </header>
     );
