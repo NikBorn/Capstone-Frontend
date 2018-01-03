@@ -9,9 +9,9 @@ class SignInSignUp extends Component  {
         console.log(result.user.email)
         fetch(`http://localhost:3000/api/v1/users/${result.user.email}`)
           .then(response => response.json())
-          .then(parsed => console.log(parsed))
+          .then(parsed =>  parsed);
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }
 
   render() {
