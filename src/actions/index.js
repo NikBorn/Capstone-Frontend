@@ -11,3 +11,10 @@ export const setLocationConcerts = (localConcerts) => {
     localConcerts
   };
 };
+
+export const signedInUser = (user) => {
+  return {
+    type: 'Signed_In_User',
+    user
+  };
+};
