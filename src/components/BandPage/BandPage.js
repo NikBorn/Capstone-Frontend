@@ -1,7 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const BandPage = () => {
 
+const BandPage = (props) => {
+
+  console.log(props)
 
   return (
     <div>
@@ -10,4 +14,12 @@ const BandPage = () => {
   )
 }
 
-export default BandPage;
+const mapStateToProps = (state) => {
+  return {
+    searchBandResults: state.searchBandResults
+  };
+};
+
+
+
+export default withRouter(connect(mapStateToProps, null)(BandPage))
