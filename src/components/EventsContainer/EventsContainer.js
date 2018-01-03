@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
+import phq from '../../utils/phq';
 
-let phq = new Client({ access_token: '5TMbBWVg0ofZzNXOBTrywjjivhWoV4' });
 
 class EventsContainer extends Component {
 
