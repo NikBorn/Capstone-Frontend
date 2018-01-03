@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import phq from '../../utils/phq';
+import { Link } from 'react-router-dom';
+
 
 
 class SearchBar extends Component {
@@ -8,7 +10,7 @@ class SearchBar extends Component {
     this.state = {
       selected: null,
       searchValue: ''
-    }
+    };
   }
 
   fetchSearchBand(bandName) {
@@ -18,7 +20,7 @@ class SearchBar extends Component {
       }
     )
       .then((results) => {
-        console.log(results.result.results)
+        console.log(results.result.results);
         return results.result.results;
       })
       .catch(error => console.log(error));
@@ -34,18 +36,22 @@ class SearchBar extends Component {
           <option value='Locations'>Locations</option>
         </select>
         <input onChange={(event) => {
-          this.setState({searchValue: event.target.value})
+          this.setState({searchValue: event.target.value});
         }
 
         }/>
         <button onClick={(event) => {
           event.preventDefault();
-          this.fetchSearchBand(this.state.searchValue)
+          this.fetchSearchBand(this.state.searchValue);
         }
-        }>Search</button>
+        }>
+          <Link to='/band-results'>
+            Search
+          </Link>
+        </button>
       </div>
-    )
-  };
+    );
+  }
 };
 
 export default SearchBar;
