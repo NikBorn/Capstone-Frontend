@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import phq from '../../utils/phq';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setSearchBandResults } from '../../actions/index';
+
 
 
 
@@ -21,7 +24,7 @@ class SearchBar extends Component {
     )
       .then((results) => {
         console.log(results.result.results);
-        return results.result.results;
+        setSearchBandResults(results.result.results);
       })
       .catch(error => console.log(error));
   }
@@ -40,9 +43,9 @@ class SearchBar extends Component {
         }
 
         }/>
-        <button onClick={(event) => {
+        <button onClick={async (event) => {
           event.preventDefault();
-          this.fetchSearchBand(this.state.searchValue);
+          await this.fetchSearchBand(this.state.searchValue);
         }
         }>
           <Link to='/band-results'>
@@ -54,4 +57,14 @@ class SearchBar extends Component {
   }
 };
 
-export default SearchBar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSearchBandResults: (searchBandResults) => {
+      dispatch(setSearchBandResults(searchBandResults));
+    }
+  }
+}
+
+
+
+export default withRouter(connect(null, mapDispatchToProps)(SearchBar));

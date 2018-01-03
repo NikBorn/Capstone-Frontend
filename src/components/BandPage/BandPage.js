@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const BandPage = (props) => {
 
-  console.log(props)
+  // console.log(props)
 
   return (
     <div>
