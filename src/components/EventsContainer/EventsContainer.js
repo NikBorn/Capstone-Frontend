@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
-import phq from '../../utils/phq'
+import phq from '../../utils/phq';
 
 
 class EventsContainer extends Component {
@@ -18,7 +18,6 @@ class EventsContainer extends Component {
       });
       const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
       this.props.setLocationConcerts(localConcerts);
-      this.fetchSearchBand('lady gaga')
     });
   }
 
@@ -31,19 +30,6 @@ class EventsContainer extends Component {
       }
     )
       .then((results) => {
-        return results.result.results;
-      })
-      .catch(error => console.log(error));
-  }
-
-    fetchSearchBand(bandName) {
-    return phq.events.search(
-      {
-        q: `${bandName}`
-      }
-    )
-      .then((results) => {
-        console.log(results.result.results)
         return results.result.results;
       })
       .catch(error => console.log(error));
