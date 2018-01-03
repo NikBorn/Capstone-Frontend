@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventCards from './EventCards/EventCards';
+import EventCards from '../EventCards/EventCards';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -46,7 +46,6 @@ class EventsContainer extends Component {
   }
 
   render(){
-    console.log(this.props)
     return (
       <section className='events-container'>
       {this.buildEvents()}
