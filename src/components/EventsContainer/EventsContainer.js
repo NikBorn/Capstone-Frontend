@@ -48,7 +48,7 @@ class EventsContainer extends Component {
   render(){
     return (
       <section className='events-container'>
-      {this.buildEvents()}
+        {this.buildEvents()}
       </section>
     );
   }

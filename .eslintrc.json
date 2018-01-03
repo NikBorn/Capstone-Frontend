@@ -91,7 +91,7 @@
     ],
     "max-len": [
       "warn",
-      80
+      120
     ],
     "no-duplicate-imports": "error",
     "id-length": "error",
