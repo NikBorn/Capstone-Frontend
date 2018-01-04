@@ -18,3 +18,11 @@ export const signedInUser = (user) => {
     user
   };
 };
+
+export const setSearchBandResults = (searchBandResults) => {
+  console.log('Action!', searchBandResults)
+  return {
+    type: 'SET_SEARCH_BAND_RESULTS',
+    searchBandResults
+  };
+};

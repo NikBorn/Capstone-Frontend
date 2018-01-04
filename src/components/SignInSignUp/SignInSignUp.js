@@ -26,7 +26,6 @@ class SignInSignUp extends Component  {
       name: result.user.displayName,
       email: result.user.email
     };
-    console.log(newUser)
     fetch('http://localhost:3000/api/v1/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -38,7 +37,6 @@ class SignInSignUp extends Component  {
         }
       })
       .then(parsed => {
-        console.log(parsed)
         const user = {
           id: parsed[0].id,
           email: parsed[0].email,
@@ -57,7 +55,6 @@ class SignInSignUp extends Component  {
             if (response.status === 200){
               this.signInUserToStore(response);
             } else {
-              console.log(result.user);
               this.postUserToDB(result);
             }
           });
@@ -66,7 +63,6 @@ class SignInSignUp extends Component  {
   }
 
   render() {
-    console.log(this.props);
     return (
       <button onClick={this.signIn.bind(this)}>Sign In/Sign Up</button>
     );

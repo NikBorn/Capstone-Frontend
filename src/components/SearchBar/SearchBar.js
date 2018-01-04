@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import phq from '../../utils/phq';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setSearchBandResults } from '../../actions/index';
+
+
 
 
 class SearchBar extends Component {
@@ -8,7 +13,8 @@ class SearchBar extends Component {
     this.state = {
       selected: null,
       searchValue: ''
-    }
+    };
+    
   }
 
   fetchSearchBand(bandName) {
@@ -18,8 +24,8 @@ class SearchBar extends Component {
       }
     )
       .then((results) => {
-        console.log(results.result.results)
-        return results.result.results;
+        console.log(results.result.results);
+        this.props.setSearchBandResults(results.result.results);
       })
       .catch(error => console.log(error));
   }
@@ -27,6 +33,8 @@ class SearchBar extends Component {
   render () {
 
     return (
+      
+
       <div className='NavBar'>
         <select>
           <option value='Bands'>Bands</option>
@@ -34,18 +42,32 @@ class SearchBar extends Component {
           <option value='Locations'>Locations</option>
         </select>
         <input onChange={(event) => {
-          this.setState({searchValue: event.target.value})
+          this.setState({searchValue: event.target.value});
         }
 
         }/>
-        <button onClick={(event) => {
+        <button onClick={async (event) => {
           event.preventDefault();
-          this.fetchSearchBand(this.state.searchValue)
+          await this.fetchSearchBand(this.state.searchValue)
         }
-        }>Search</button>
+        }>
+          <Link to='/band-results'>
+            Search
+          </Link>
+        </button>
       </div>
-    )
-  };
+    );
+  }
 };
 
-export default SearchBar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSearchBandResults: (searchBandResults) => {
+      dispatch(setSearchBandResults(searchBandResults));
+    }
+  }
+}
+
+
+
+export default withRouter(connect(null, mapDispatchToProps)(SearchBar));
