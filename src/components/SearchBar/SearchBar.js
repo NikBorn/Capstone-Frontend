@@ -14,6 +14,7 @@ class SearchBar extends Component {
       selected: null,
       searchValue: ''
     };
+    
   }
 
   fetchSearchBand(bandName) {
@@ -24,7 +25,7 @@ class SearchBar extends Component {
     )
       .then((results) => {
         console.log(results.result.results);
-        setSearchBandResults(results.result.results);
+        this.props.setSearchBandResults(results.result.results);
       })
       .catch(error => console.log(error));
   }
@@ -32,6 +33,8 @@ class SearchBar extends Component {
   render () {
 
     return (
+      
+
       <div className='NavBar'>
         <select>
           <option value='Bands'>Bands</option>
@@ -45,7 +48,7 @@ class SearchBar extends Component {
         }/>
         <button onClick={async (event) => {
           event.preventDefault();
-          await this.fetchSearchBand(this.state.searchValue);
+          await this.fetchSearchBand(this.state.searchValue)
         }
         }>
           <Link to='/band-results'>

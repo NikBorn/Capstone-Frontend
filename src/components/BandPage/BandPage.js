@@ -5,11 +5,27 @@ import { connect } from 'react-redux';
 
 const BandPage = (props) => {
 
-  // console.log(props)
+  const showsArray = props.searchBandResults;
+
+  // console.log(shows)
+  
+  const shows = showsArray.map(show => {
+    console.log(show.title)
+
+    const venue = show.entities ? show.entities.venues[0].name : 'No venue name'
+
+    return (
+      <div>
+        <h3>{show.title}</h3>
+        <h4>{venue}</h4>
+        <h4>Date: {show.start}</h4>
+      </div>
+    )
+  })
 
   return (
     <div>
-      Yo!
+      {shows}
     </div>
   )
 }
