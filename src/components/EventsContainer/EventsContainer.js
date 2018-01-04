@@ -24,7 +24,7 @@ class EventsContainer extends Component {
   fetchLocalConcerts(lat, long) {
     return phq.events.search(
       {
-        rank_level: 5,
+        // rank_level: 5,
         category: 'concerts',
         within: `100mi@${lat},${long}`
       }
@@ -37,6 +37,7 @@ class EventsContainer extends Component {
 
   buildEvents (){
     return this.props.locationConcerts.map(concert => {
+      console.log('concert', concert)
       if (concert.entities === null) {
         return <EventCards title={concert.title} venue='Not Available' start={concert.start} key={concert.id}/>;
       } else {
