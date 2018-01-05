@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import EventCards from '../EventCards/EventCards';
 
 const BandPage = (props) => {
 
@@ -13,11 +14,7 @@ const BandPage = (props) => {
     const showDate = month.concat(`-${day}-`, year);
 
     return (
-      <div className='show-card'>
-        <h3>{show.title}</h3>
-        <h4>{venue}</h4>
-        <h4>Date: {showDate}</h4>
-      </div>
+      <EventCards title={show.title} venue={venue} start={show.start} key={show.id} />
     );
   });
 
