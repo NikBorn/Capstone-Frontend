@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import phq from '../../utils/phq';
+import './EventsContainer.css'
 
 
 class EventsContainer extends Component {
@@ -22,11 +23,13 @@ class EventsContainer extends Component {
   }
 
   fetchLocalConcerts(lat, long) {
+    const todaysDate = (new Date()).toISOString()
     return phq.events.search(
       {
-        rank_level: 5,
+        sort: 'start',
         category: 'concerts',
-        within: `100mi@${lat},${long}`
+        within: `100mi@${lat},${long}`,
+        'active.gte': `${todaysDate.substr(0, 10)}`
       }
     )
       .then((results) => {
@@ -37,6 +40,7 @@ class EventsContainer extends Component {
 
   buildEvents (){
     return this.props.locationConcerts.map(concert => {
+      console.log('concert', concert)
       if (concert.entities === null) {
         return <EventCards title={concert.title} venue='Not Available' start={concert.start} key={concert.id}/>;
       } else {

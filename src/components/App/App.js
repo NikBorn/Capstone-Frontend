@@ -3,6 +3,7 @@ import './App.css';
 import   Header   from '../Header/Header';
 import   EventsContainer   from '../EventsContainer/EventsContainer';
 import { Route } from 'react-router';
+import BandPage from '../BandPage/BandPage';
 
 export default class App extends Component {
 
@@ -18,6 +19,12 @@ export default class App extends Component {
         <Route exact path='/'
           render={() => [
             <EventsContainer />
+          ]
+          }
+        />
+        <Route exact path='/band-results'
+          render={() => [
+            <BandPage />
           ]
           }
         />
