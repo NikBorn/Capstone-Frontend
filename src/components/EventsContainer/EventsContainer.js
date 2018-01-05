@@ -23,12 +23,13 @@ class EventsContainer extends Component {
   }
 
   fetchLocalConcerts(lat, long) {
+    const todaysDate = (new Date()).toISOString()
     return phq.events.search(
       {
-        // rank_level: 5,
+        sort: 'start',
         category: 'concerts',
         within: `100mi@${lat},${long}`,
-        'active.gte': '2018-01-01'
+        'active.gte': `${todaysDate.substr(0, 10)}`
       }
     )
       .then((results) => {
