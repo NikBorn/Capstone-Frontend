@@ -3,9 +3,7 @@ import phq from '../../utils/phq';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setSearchBandResults } from '../../actions/index';
-
-
-
+import './SearchBar.css';
 
 class SearchBar extends Component {
   constructor () {
@@ -14,7 +12,6 @@ class SearchBar extends Component {
       selected: null,
       searchValue: ''
     };
-    
   }
 
   fetchSearchBand(bandName) {
@@ -33,41 +30,31 @@ class SearchBar extends Component {
   render () {
 
     return (
-      
-
-      <div className='NavBar'>
-        <select>
-          <option value='Bands'>Bands</option>
-          <option value='Venues'>Venues</option>
-          <option value='Locations'>Locations</option>
-        </select>
-        <input onChange={(event) => {
+      <div className='SearchBar'>
+        <input className='SearchBar-input' placeholder='Search by Band Name' onChange={(event) => {
           this.setState({searchValue: event.target.value});
         }
-
         }/>
-        <button onClick={async (event) => {
+        <button className='searh-button' onClick={async (event) => {
           event.preventDefault();
-          await this.fetchSearchBand(this.state.searchValue)
+          await this.fetchSearchBand(this.state.searchValue);
         }
         }>
           <Link to='/band-results'>
-            Search
+            SEARCH
           </Link>
         </button>
       </div>
     );
   }
-};
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setSearchBandResults: (searchBandResults) => {
       dispatch(setSearchBandResults(searchBandResults));
     }
-  }
-}
-
-
+  };
+};
 
 export default withRouter(connect(null, mapDispatchToProps)(SearchBar));

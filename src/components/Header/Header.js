@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SignInSignUp from '../SignInSignUp/SignInSignUp';
 import SearchBar from '../SearchBar/SearchBar';
 import NavBar from '../NavBar/NavBar';
+import './Header.css';
 
 class Header extends Component {
 

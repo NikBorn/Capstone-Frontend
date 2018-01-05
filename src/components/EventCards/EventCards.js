@@ -19,7 +19,7 @@ export default class EventsCards extends Component {
         <p>
           Date: {showDate}
         </p>
-        <button>Add to Tracker</button>
+        <button className='tracker-button'>Add to Tracker</button>
       </article>
     );
   }
