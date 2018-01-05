@@ -14,10 +14,10 @@ export default class EventsCards extends Component {
           {this.props.title}
         </h3>
         <p>
-        Venue: {this.props.venue}
+          {showDate}
         </p>
         <p>
-          Date: {showDate}
+          {this.props.venue}
         </p>
         <button className='tracker-button'>Add to Tracker</button>
       </article>

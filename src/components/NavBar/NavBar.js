@@ -8,18 +8,18 @@ class NavBar extends Component {
     return (
       <ul className='NavBar'>
         <li>
-          {/* <Link> */}
+          <Link to='/'>
             Home
+          </Link>
+        </li>
+        <li>
+          {/* <Link> */}
+            Favorite Bands
           {/* </Link> */}
         </li>
         <li>
           {/* <Link> */}
-            Favorites
-          {/* </Link> */}
-        </li>
-        <li>
-          {/* <Link> */}
-            Profile
+            Favorite Shows
           {/* </Link> */}
         </li>
       </ul>
