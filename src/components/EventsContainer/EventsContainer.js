@@ -29,7 +29,7 @@ class EventsContainer extends Component {
         sort: 'start',
         category: 'concerts',
         within: `100mi@${lat},${long}`,
-        'active.gte': `${todaysDate.substr(0, 10)}`
+        'active.gte': `${todaysDate.substr(0, 10)}`,
       }
     )
       .then((results) => {

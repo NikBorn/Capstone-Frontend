@@ -4,6 +4,7 @@ import { signedInUser } from '../../actions/index';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import './SignInSignUp.css';
 
 
 class SignInSignUp extends Component  {
@@ -64,7 +65,7 @@ class SignInSignUp extends Component  {
 
   render() {
     return (
-      <button onClick={this.signIn.bind(this)}>Sign In/Sign Up</button>
+      <button className='SignInSignUp-button' onClick={this.signIn.bind(this)}>Sign In/Sign Up</button>
     );
   }
 }

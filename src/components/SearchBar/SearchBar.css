@@ -1,0 +1,36 @@
+
+  .SearchBar {
+  display: flex;
+}
+
+
+.searh-button {
+  font-size: 14px;
+  /* padding: 10px; */
+  height: 35px;
+  /* background-color: transparent; */
+  border-radius: 0 10px 10px 0;
+  background-color: #5FC7EE;
+  border-color: rgb(244, 244, 248);
+  border: 2px solid #5FC7EE;
+}
+
+.SearchBar-input {
+  height: 35px;
+  width: 200px;
+  font-size: 14px;
+  border-radius: 10px 0px 0px 10px;
+  
+  padding: 10px;
+  /* margin-right: 4px; */
+  background-color: rgb(244, 244, 248);
+  /* border-color: #5FC7EE; */
+  border: 3px solid #5FC7EE;
+  color: #303F68;  
+}
+
+a {
+  color: #303F68;
+  /* color: rgb(244, 244, 248); */
+  text-decoration: none;
+}
