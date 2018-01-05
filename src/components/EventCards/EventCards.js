@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './EventCards.css';
 
 export default class EventsCards extends Component {
 
@@ -9,15 +10,16 @@ export default class EventsCards extends Component {
     const showDate = month.concat(`-${day}-`, year);
     return (
       <article className='event-card'>
-        <h2>
+        <h3 className='event-title'>
           {this.props.title}
-        </h2>
+        </h3>
         <p>
         Venue: {this.props.venue}
         </p>
         <p>
           Date: {showDate}
         </p>
+        <button>Add to Tracker</button>
       </article>
     );
   }

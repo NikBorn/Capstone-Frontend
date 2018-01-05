@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import phq from '../../utils/phq';
+import './EventsContainer.css'
 
 
 class EventsContainer extends Component {
@@ -26,7 +27,8 @@ class EventsContainer extends Component {
       {
         // rank_level: 5,
         category: 'concerts',
-        within: `100mi@${lat},${long}`
+        within: `100mi@${lat},${long}`,
+        'active.gte': '2018-01-01'
       }
     )
       .then((results) => {
