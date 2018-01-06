@@ -6,16 +6,23 @@ import { connect } from 'react-redux';
 import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import phq from '../../utils/phq';
-import './EventsContainer.css'
+import './EventsContainer.css';
 
 
 class EventsContainer extends Component {
+
+  constructor() {
+    super();
+    this.state={
+      offset: 10
+    };
+  }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(async (position) => {
       this.props.setUserLocation({
         latitude: position.coords.latitude,
-        longitutde: position.coords.longitude
+        longitude: position.coords.longitude
       });
       const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
       this.props.setLocationConcerts(localConcerts);
@@ -23,36 +30,81 @@ class EventsContainer extends Component {
   }
 
   fetchLocalConcerts(lat, long) {
-    const todaysDate = (new Date()).toISOString()
+    const todaysDate = (new Date()).toISOString();
+    return phq.events.search(
+      {
+        sort: 'start',
+        category: 'concerts',
+        within: `100mi@${lat},${long}`,
+        'active.gte': `${todaysDate.substr(0, 10)}`
+      }
+    )
+      .then((results) => {
+        console.log(results.result.next);
+        return results.result.results;
+      })
+      .catch(error => console.log(error));
+  }
+
+  increaseOffset() {
+    this.setState({offset: this.state.offset + 10})
+    console.log(this.state.offset)
+  }
+
+  fetchNextTen () {
+    const todaysDate = (new Date()).toISOString();
+    const lat = this.props.userLocation.latitude;
+    const long = this.props.userLocation.longitude;
     return phq.events.search(
       {
         sort: 'start',
         category: 'concerts',
         within: `100mi@${lat},${long}`,
         'active.gte': `${todaysDate.substr(0, 10)}`,
-      }
-    )
-      .then((results) => {
-        return results.result.results;
-      })
-      .catch(error => console.log(error));
+        offset: `${this.state.offset}`
+      },
+      this.increaseOffset()
+    );
   }
 
-  buildEvents (){
+  buildEvents() {
     return this.props.locationConcerts.map(concert => {
-      console.log('concert', concert)
       if (concert.entities === null) {
-        return <EventCards title={concert.title} venue='Not Available' start={concert.start} key={concert.id}/>;
+        return <EventCards 
+          title={concert.title} 
+          venue='No Venue Listed' 
+          start={concert.start} 
+          key={concert.id}/>;
       } else {
-        return <EventCards title={concert.title} venue={concert.entities.venues[0].name} start={concert.start} key={concert.id}/>;
+        return <EventCards 
+          title={concert.title} 
+          venue={concert.entities.venues[0].name} 
+          start={concert.start} 
+          key={concert.id}/>;
       }
     });
   }
 
+  handleClick = async () => {
+    const nextTen = await this.fetchNextTen();
+    this.props.setLocationConcerts(nextTen);
+    console.log(nextTen.result.results);
+  }
+
   render(){
+
+    const isLoading = this.props.locationConcerts.length ? 'loading-screen-hide' : 'loading-screen';
     return (
       <section className='events-container'>
+        <div className={isLoading}></div>
         {this.buildEvents()}
+        <button className='show-more-button'
+          onClick={(event) => {
+            event.preventDefault();
+            this.handleClick();
+ }
+          }
+        >Show More</button>
       </section>
     );
   }
@@ -71,7 +123,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    userCoords: state.userCoords,
+    userLocation: state.userLocation,
     locationConcerts: state.locationConcerts
   };
 };

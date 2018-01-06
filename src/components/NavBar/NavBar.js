@@ -8,23 +8,23 @@ class NavBar extends Component {
     return (
       <ul className='NavBar'>
         <li>
-          {/* <Link> */}
+          <Link to='/'>
             Home
-          {/* </Link> */}
+          </Link>
         </li>
         <li>
-          {/* <Link> */}
-            Favorites
-          {/* </Link> */}
+          <Link to='/favorite-bands'>
+            Favorite Bands
+          </Link>
         </li>
         <li>
-          {/* <Link> */}
-            Profile
-          {/* </Link> */}
+          <Link to='/favorite-shows'>
+            Favorite Shows
+          </Link>
         </li>
       </ul>
-    )
+    );
   }
-};
+}
 
 export default NavBar;
