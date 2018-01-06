@@ -11,33 +11,27 @@ export default class App extends Component {
     return (
       <div className="App">
         <Route path='/'
-          render={() => [
-            <Header />
-          ]
+          render={() => <Header />
           }
         />
         <Route exact path='/'
-          render={() => [
+          render={() => 
             <EventsContainer />
-          ]
           }
         />
         <Route exact path='/band-results'
-          render={() => [
+          render={() => 
             <BandPage />
-          ]
           }
         />
         <Route exact path='/favorite-bands'
-          render={() => [
+          render={() => 
             <h1>FAVORITE BANDS PAGE GOES HERE</h1>
-          ]
           }
         />
         <Route exact path='/favorite-shows'
-          render={() => [
+          render={() =>
             <h1>FAVORITE SHOWS PAGE GOES HERE</h1>
-          ]
           }
         />
       </div>

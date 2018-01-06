@@ -23,7 +23,7 @@
   background-image: url('../../assests/giphy-loading.gif');
   background-repeat: no-repeat;
   background-position: center;
-  /* transition: height 2s ease-in-out; */
+  /* transition: height 2s, transform 2s; */
 }
 
 .loading-screen-hide {
