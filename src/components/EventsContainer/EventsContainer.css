@@ -2,7 +2,7 @@
 .show-more-button {
   display: block;
   border-radius: 20px;
-  padding: 18px 14px;
+  padding: 20px 16px;
   font-weight: bold;
   font-size: 14px;
   background-color: #303F68;
@@ -15,4 +15,17 @@
   background-color: rgb(244, 244, 248);
   color: #303F68;
   border-color: #5FC7EE;
+}
+
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../assests/giphy-loading.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  /* transition: height 2s ease-in-out; */
+}
+
+.loading-screen-hide {
+  height: 0vh;
 }

@@ -57,8 +57,11 @@ class EventsContainer extends Component {
   }
 
   render(){
+
+      const isLoading = this.props.locationConcerts.length ? 'loading-screen-hide' : 'loading-screen'
     return (
       <section className='events-container'>
+        <div className={isLoading}></div>
         {this.buildEvents()}
         <button className='show-more-button'>Show More</button>
       </section>
