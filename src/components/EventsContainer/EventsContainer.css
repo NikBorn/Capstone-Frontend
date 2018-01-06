@@ -1,0 +1,18 @@
+
+.show-more-button {
+  display: block;
+  border-radius: 20px;
+  padding: 18px 14px;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #303F68;
+  border: 2px solid rgb(244, 244, 248);
+  color: #5FC7EE;
+  margin: 40px auto;
+}
+
+.show-more-button:hover {
+  background-color: rgb(244, 244, 248);
+  color: #303F68;
+  border-color: #5FC7EE;
+}

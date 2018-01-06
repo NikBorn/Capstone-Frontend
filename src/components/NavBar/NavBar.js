@@ -13,18 +13,18 @@ class NavBar extends Component {
           </Link>
         </li>
         <li>
-          {/* <Link> */}
+          <Link to='/favorite-bands'>
             Favorite Bands
-          {/* </Link> */}
+          </Link>
         </li>
         <li>
-          {/* <Link> */}
+          <Link to='/favorite-shows'>
             Favorite Shows
-          {/* </Link> */}
+          </Link>
         </li>
       </ul>
-    )
+    );
   }
-};
+}
 
 export default NavBar;

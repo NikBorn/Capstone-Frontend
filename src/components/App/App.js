@@ -28,15 +28,15 @@ export default class App extends Component {
           ]
           }
         />
-        <Route exact path='/Favorites'
+        <Route exact path='/favorite-bands'
           render={() => [
-            <h1>FAVORITES PAGE GOES HERE</h1>
+            <h1>FAVORITE BANDS PAGE GOES HERE</h1>
           ]
           }
         />
-        <Route exact path='/Profile'
+        <Route exact path='/favorite-shows'
           render={() => [
-            <h1>PROFILE PAGE GOES HERE</h1>
+            <h1>FAVORITE SHOWS PAGE GOES HERE</h1>
           ]
           }
         />

@@ -42,9 +42,16 @@ class EventsContainer extends Component {
     return this.props.locationConcerts.map(concert => {
       console.log('concert', concert)
       if (concert.entities === null) {
-        return <EventCards title={concert.title} venue='No Venue Listed' start={concert.start} key={concert.id}/>;
+        return <EventCards 
+          title={concert.title} 
+          venue='No Venue Listed' 
+          start={concert.start} 
+          key={concert.id}/>;
       } else {
-        return <EventCards title={concert.title} venue={concert.entities.venues[0].name} start={concert.start} key={concert.id}/>;
+        return <EventCards 
+          title={concert.title} 
+          venue={concert.entities.venues[0].name} 
+          start={concert.start} key={concert.id}/>;
       }
     });
   }
@@ -53,6 +60,7 @@ class EventsContainer extends Component {
     return (
       <section className='events-container'>
         {this.buildEvents()}
+        <button className='show-more-button'>Show More</button>
       </section>
     );
   }
