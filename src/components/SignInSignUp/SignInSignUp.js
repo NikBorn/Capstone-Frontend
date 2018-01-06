@@ -65,7 +65,7 @@ class SignInSignUp extends Component  {
 
   render() {
     return (
-      <button className='SignInSignUp-button' onClick={this.signIn.bind(this)}>Sign In/Sign Up</button>
+      <button className='SignInSignUp-button' onClick={this.signIn.bind(this)}>Sign In</button>
     );
   }
 }

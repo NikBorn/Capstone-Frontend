@@ -9,3 +9,53 @@
   padding: 0 100px;
 }
 
+.header-title a {
+  color: rgb(244, 244, 248);
+}
+
+.header-content {
+  flex-grow: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+@media screen and (max-width: 1030px) {
+
+  .header {
+    background-color: magenta;
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 910px) {
+
+  .header {
+    background-color: lime;
+    /* flex-direction: column; */
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    margin: 0 0 6px 0;;
+  }
+
+  .SearchBar-input,
+  .searh-button {
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .header-content {
+    flex-direction: column;
+  }
+
+  li {
+    margin: 6px 0
+  }
+}
+
