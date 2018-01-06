@@ -78,5 +78,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+SignInSignUp.propTypes = {
+  signedInUser: PropTypes.func
+};
+
 
 export default withRouter(connect(null, mapDispatchToProps)(SignInSignUp));

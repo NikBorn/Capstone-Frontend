@@ -4,6 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setSearchBandResults } from '../../actions/index';
 import './SearchBar.css';
+import PropTypes from 'prop-types';
+
 
 class SearchBar extends Component {
   constructor () {
@@ -17,7 +19,7 @@ class SearchBar extends Component {
   fetchSearchBand(bandName) {
     return phq.events.search(
       {
-        q: `${bandName}`
+        'q': `${bandName}`
       }
     )
       .then((results) => {
@@ -55,6 +57,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setSearchBandResults(searchBandResults));
     }
   };
+};
+
+SearchBar.propTypes = {
+  setSearchBandResults: PropTypes.func
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(SearchBar));

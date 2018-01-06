@@ -3,7 +3,6 @@ import EventCards from '../EventCards/EventCards';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Client from 'predicthq';
 import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import phq from '../../utils/phq';
 import './EventsContainer.css';
@@ -40,15 +39,13 @@ class EventsContainer extends Component {
       }
     )
       .then((results) => {
-        console.log(results.result.next);
         return results.result.results;
       })
       .catch(error => console.log(error));
   }
 
   increaseOffset() {
-    this.setState({offset: this.state.offset + 10})
-    console.log(this.state.offset)
+    this.setState({offset: this.state.offset + 10});
   }
 
   fetchNextTen () {
@@ -68,19 +65,19 @@ class EventsContainer extends Component {
   }
 
   buildEvents() {
-    return this.props.locationConcerts.map(concert => {
+    return this.props.locationConcerts.map((concert, index) => {
       if (concert.entities === null) {
         return <EventCards 
           title={concert.title} 
           venue='No Venue Listed' 
           start={concert.start} 
-          key={concert.id}/>;
+          key={concert.id.concat(index)}/>;
       } else {
         return <EventCards 
           title={concert.title} 
           venue={concert.entities.venues[0].name} 
           start={concert.start} 
-          key={concert.id}/>;
+          key={concert.id.concat(index)}/>;
       }
     });
   }
@@ -102,7 +99,7 @@ class EventsContainer extends Component {
           onClick={(event) => {
             event.preventDefault();
             this.handleClick();
- }
+          }
           }
         >Show More</button>
       </section>
@@ -130,7 +127,9 @@ const mapStateToProps = (state) => {
 
 EventsContainer.propTypes = {
   setUserLocation: PropTypes.func,
-  setLocationConcerts: PropTypes.func
+  setLocationConcerts: PropTypes.func,
+  locationConcerts: PropTypes.array,
+  userLocation: PropTypes.object
 };
 
 
