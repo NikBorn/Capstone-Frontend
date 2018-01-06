@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './EventCards.css';
+import PropTypes from 'prop-types';
 
-export default class EventsCards extends Component {
+class EventsCards extends Component {
 
   render() {
     const month = this.props.start.substr(5, 2);
@@ -24,3 +25,11 @@ export default class EventsCards extends Component {
     );
   }
 }
+
+EventsCards.propTypes = {
+  title: PropTypes.string,
+  venue: PropTypes.string,
+  start: PropTypes.string
+};
+
+export default EventsCards;
