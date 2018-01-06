@@ -65,19 +65,19 @@ class EventsContainer extends Component {
   }
 
   buildEvents() {
-    return this.props.locationConcerts.map(concert => {
+    return this.props.locationConcerts.map((concert, index) => {
       if (concert.entities === null) {
         return <EventCards 
           title={concert.title} 
           venue='No Venue Listed' 
           start={concert.start} 
-          key={concert.id}/>;
+          key={concert.id.concat(index)}/>;
       } else {
         return <EventCards 
           title={concert.title} 
           venue={concert.entities.venues[0].name} 
           start={concert.start} 
-          key={concert.id}/>;
+          key={concert.id.concat(index)}/>;
       }
     });
   }
