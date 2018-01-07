@@ -51,7 +51,7 @@ class SignInSignUp extends Component  {
   signIn() {
     auth.signInWithPopup(provider)
       .then((result) => {
-        fetch(`http://localhost:3000/api/v1/users/${result.user.email}`)
+        fetch(`http://localhost:3000/api/v1/users/email/${result.user.email}`)
           .then(response => {
             if (response.status === 200){
               this.signInUserToStore(response);
