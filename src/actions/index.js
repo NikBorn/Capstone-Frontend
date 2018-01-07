@@ -34,7 +34,6 @@ export const setSearchTerm = (searchTerm) => {
 };
 
 export const setFavoriteShows = (favoriteShow) => {
-  console.log(favoriteShow)
   return {
     type: 'Set_Favorite_Shows',
     favoriteShow
