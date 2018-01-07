@@ -20,16 +20,25 @@ class EventsCards extends Component {
       description: description
     };
 
-    console.log(favoriteConcert)
-
     fetch('http://localhost:3000/api/v1/shows', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(favoriteConcert)
     })
+      .then(response => response.json())
+      .then(parsed => this.postShowToJoinsTable(parsed))
+      .catch(error => console.log(error));
+  }
+
+  postShowToJoinsTable(concert) {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.signedInUser.id}/users_shows/${concert[0].id}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
       .then(response => console.log(response))
       .catch(error => console.log(error));
   }
+  
 
   addShowToFavorites (concert){
     this.postFavoriteShow(concert);
@@ -52,7 +61,12 @@ class EventsCards extends Component {
         <p>
           {this.props.venue}
         </p>
-        <button className='tracker-button' onClick={()=>this.addShowToFavorites(this.props.concert)}>Add to Tracker</button>
+        {this.props.signedInUser.id ? 
+          <button className='tracker-button' onClick={() => this.addShowToFavorites(this.props.concert)}>Add to Tracker</button>
+          :
+          <button className='tracker-button'>Sign In To Track</button>
+        }
+        
       </article>
     );
   }
@@ -66,12 +80,19 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(EventsCards));
+const mapStateToProps = (state) => {
+  return {
+    signedInUser: state.signedInUser
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventsCards));
 
 EventsCards.propTypes = {
   title: PropTypes.string,
   venue: PropTypes.string,
   start: PropTypes.string,
   concert: PropTypes.object,
+  signedInUser: PropTypes.object,
   setFavoriteShows: PropTypes.func
 };
