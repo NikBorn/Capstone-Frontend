@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import './EventCards.css';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setFavoriteShows } from '../../actions/index';
 
 class EventsCards extends Component {
+
+  addShowToFavorites (concert){
+    console.log(concert)
+    this.props.setFavoriteShows(concert);
+  }
 
   render() {
     const month = this.props.start.substr(5, 2);
@@ -20,16 +28,24 @@ class EventsCards extends Component {
         <p>
           {this.props.venue}
         </p>
-        <button className='tracker-button'>Add to Tracker</button>
+        <button className='tracker-button' onClick={()=>this.addShowToFavorites(this.props.concert)}>Add to Tracker</button>
       </article>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFavoriteShows: (favoriteShow) => {
+      dispatch(setFavoriteShows(favoriteShow));
+    }
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(EventsCards));
 
 EventsCards.propTypes = {
   title: PropTypes.string,
   venue: PropTypes.string,
   start: PropTypes.string
 };
-
-export default EventsCards;

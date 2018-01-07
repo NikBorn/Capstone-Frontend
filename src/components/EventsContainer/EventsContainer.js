@@ -71,13 +71,15 @@ class EventsContainer extends Component {
           title={concert.title} 
           venue='No Venue Listed' 
           start={concert.start} 
-          key={concert.id.concat(index)}/>;
+          key={concert.id.concat(index)}
+          concert={concert}/>;
       } else {
         return <EventCards 
           title={concert.title} 
           venue={concert.entities.venues[0].name} 
           start={concert.start} 
-          key={concert.id.concat(index)}/>;
+          key={concert.id.concat(index)}
+          concert={concert}/>;
       }
     });
   }
@@ -85,7 +87,7 @@ class EventsContainer extends Component {
   handleClick = async () => {
     const nextTen = await this.fetchNextTen();
     this.props.setLocationConcerts(nextTen);
-    console.log(nextTen.result.results);
+    // console.log(nextTen.result.results);
   }
 
   render(){

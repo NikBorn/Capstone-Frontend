@@ -27,9 +27,16 @@ export const setSearchBandResults = (searchBandResults) => {
 };
 
 export const setSearchTerm = (searchTerm) => {
-  console.log('action: ', searchTerm)
   return {
     type: 'SET_SEARCH_TERM',
     searchTerm
+  };
+};
+
+export const setFavoriteShows = (favoriteShow) => {
+  console.log(favoriteShow)
+  return {
+    type: 'Set_Favorite_Shows',
+    favoriteShow
   };
 };
