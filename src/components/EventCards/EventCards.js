@@ -19,7 +19,6 @@ class EventsCards extends Component {
       longitude: concert.location[1].toString(),
       description: description
     };
-
     fetch('http://localhost:3000/api/v1/shows', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -31,6 +30,8 @@ class EventsCards extends Component {
   }
 
   postShowToJoinsTable(concert) {
+    console.log(this.props.signedInUser)
+    console.log(concert)
     fetch(`http://localhost:3000/api/v1/users/${this.props.signedInUser.id}/users_shows/${concert[0].id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
