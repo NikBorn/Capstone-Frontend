@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import phq from '../../utils/phq';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setSearchBandResults } from '../../actions/index';
+import { setSearchBandResults, setSearchTerm } from '../../actions/index';
 import './SearchBar.css';
 import PropTypes from 'prop-types';
 
@@ -39,6 +39,7 @@ class SearchBar extends Component {
         }/>
         <button className='searh-button' onClick={async (event) => {
           event.preventDefault();
+          this.props.setSearchTerm(this.state.searchValue);
           await this.fetchSearchBand(this.state.searchValue);
         }
         }>
@@ -55,12 +56,16 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setSearchBandResults: (searchBandResults) => {
       dispatch(setSearchBandResults(searchBandResults));
+    },
+    setSearchTerm: (searchTerm) => {
+      dispatch(setSearchTerm(searchTerm));
     }
   };
 };
 
 SearchBar.propTypes = {
-  setSearchBandResults: PropTypes.func
+  setSearchBandResults: PropTypes.func,
+  setSearchTerm: PropTypes.func
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(SearchBar));

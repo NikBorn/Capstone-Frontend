@@ -8,11 +8,6 @@ class NavBar extends Component {
     return (
       <ul className='NavBar'>
         <li>
-          <Link to='/'>
-            Home
-          </Link>
-        </li>
-        <li>
           <Link to='/favorite-bands'>
             Favorite Bands
           </Link>
