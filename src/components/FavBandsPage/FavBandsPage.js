@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FavBandCard from '../FavBandBard/FavBandCard';
+import FavBandCard from '../FavBandCard/FavBandCard';
 
 class FavBandsPage extends Component {
 
