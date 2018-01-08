@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { connect } from 'react-redux';
+import { setFavoriteBands } from '../../actions';
 
 
 class NavBar extends Component {
@@ -18,7 +19,13 @@ class NavBar extends Component {
         console.log(bands)
         return Promise.all(bands)
       })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+        const bandObjs = res.map(band => {
+          return band[0];
+        })
+        this.props.setFavoriteBands(bandObjs)
+      })
       .catch(error => console.log(error))
   }
 
@@ -59,4 +66,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(NavBar);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFavoriteBands: (userCoords) => {
+      dispatch(setFavoriteBands(userCoords));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -39,3 +39,11 @@ export const setFavoriteShows = (favoriteShow) => {
     favoriteShow
   };
 };
+
+export const setFavoriteBands = (favoriteBands) => {
+  console.log('action: ', favoriteBands)
+  return {
+    type: 'SET_FAVORITE_BANDS',
+    favoriteBands
+  }
+}
