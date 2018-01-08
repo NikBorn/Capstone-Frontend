@@ -5,6 +5,7 @@ import signedInUser from './signedInUser';
 import searchBandResults from './searchBandResults';
 import searchTerm from './searchTerm';
 import favoriteShows from './favoriteShow';
+import favoriteBands from './favoriteBands';
 
 export default combineReducers({
   userLocation,
@@ -12,5 +13,6 @@ export default combineReducers({
   signedInUser,
   searchBandResults,
   searchTerm,
-  favoriteShows
+  favoriteShows,
+  favoriteBands
 });

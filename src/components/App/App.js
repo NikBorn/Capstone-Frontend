@@ -4,6 +4,7 @@ import   Header   from '../Header/Header';
 import   EventsContainer   from '../EventsContainer/EventsContainer';
 import { Route } from 'react-router';
 import BandPage from '../BandPage/BandPage';
+import FavBandsPage from '../FavBandsPage/FavBandsPage';
 
 export default class App extends Component {
 
@@ -26,7 +27,7 @@ export default class App extends Component {
         />
         <Route exact path='/favorite-bands'
           render={() => 
-            <h1>FAVORITE BANDS PAGE GOES HERE</h1>
+            <FavBandsPage />
           }
         />
         <Route exact path='/favorite-shows'
