@@ -33,23 +33,11 @@ a {
 @media screen and (max-width: 1030px) {
 
   .header {
-    background-color: magenta;
     padding: 0 40px;
-  }
-
-  .event-card {
-      width: 360px;
-      margin: 50px 25px;
-      background-color: magenta;
   }
 }
 
 @media screen and (max-width: 910px) {
-
-  .header {
-    background-color: lime;
-    /* flex-direction: column; */
-  }
 
   ul {
     margin: 0;
@@ -67,7 +55,7 @@ a {
 
 @media screen and (max-width: 825px) {
   .header {
-    padding: 0 20px;
+    padding: 0;
   }
 
   .header-content {
