@@ -65,13 +65,14 @@ a {
   }
 }
 
-/* @media screen and (max-width: 910px) {
+@media screen and (max-width: 825px) {
   .header-content {
     flex-direction: column;
   }
 
-  li {
-    margin: 6px 0
+  .header-title {
+    margin: 4px;
   }
-} */
+
+}
 
