@@ -24,6 +24,7 @@ class EventsContainer extends Component {
         longitude: position.coords.longitude
       });
       const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
+      console.log('locationConcerts:', localConcerts);
       this.props.setLocationConcerts(localConcerts);
     });
   }

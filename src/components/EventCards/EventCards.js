@@ -55,7 +55,7 @@ class EventsCards extends Component {
 
   addShowToFavorites (concert){
     this.postFavoriteShow(concert);
-    this.props.setFavoriteShows(concert);
+    // this.props.setFavoriteShows(concert);
   }
 
   render() {
