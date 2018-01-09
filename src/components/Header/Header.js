@@ -15,7 +15,6 @@ class Header extends Component {
         <div className='header-content'>
           <NavBar />
           <SearchBar />
-          <SignInSignUp />
         </div>
       </header>
     );
