@@ -29,7 +29,8 @@ class BandPage extends Component {
   }
 
   postBandtoJoinsTable(band) {
-    fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/${this.props.signedInUser.id}/bands_users/${band[0].id}`, {
+    fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/
+    ${this.props.signedInUser.id}/bands_users/${band[0].id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'}
     })
@@ -73,7 +74,8 @@ const mapStateToProps = (state) => {
 
 BandPage.propTypes = {
   searchBandResults: PropTypes.array,
-  searchTerm: PropTypes.string
+  searchTerm: PropTypes.string,
+  signedInUser: PropTypes.object
 };
 
 export default withRouter(connect(mapStateToProps, null)(BandPage));

@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
 };
 
 FavBandsPage.propTypes = {
- favoriteBands: PropTypes.array
+  favoriteBands: PropTypes.array
 };
 
 export default connect(mapStateToProps, null)(FavBandsPage);

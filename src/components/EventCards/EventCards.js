@@ -44,7 +44,8 @@ class EventsCards extends Component {
   }
 
   postShowToJoinsTable(concert) {
-    fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/${this.props.signedInUser.id}/users_shows/${concert[0].id}`, {
+    fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/
+    ${this.props.signedInUser.id}/users_shows/${concert[0].id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -74,7 +75,8 @@ class EventsCards extends Component {
           {this.props.venue}
         </p>
         {this.props.signedInUser.id ? 
-          <button className='tracker-button' onClick={() => this.addShowToFavorites(this.props.concert)}>Add to Tracker</button>
+          <button className='tracker-button' 
+            onClick={() => this.addShowToFavorites(this.props.concert)}>Add to Tracker</button>
           :
           <button className='tracker-button' onClick={this.handleModal} >Sign In To Track</button>
         }
