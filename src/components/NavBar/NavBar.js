@@ -89,7 +89,7 @@ class NavBar extends Component {
         <h1 className='header-title' key='1'>
           <Link to='/'>
             Concert Tracker
-        </Link>
+          </Link>
         </h1>
         <li>
           <button className='nav-button' 
