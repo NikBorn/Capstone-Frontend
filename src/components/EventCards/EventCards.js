@@ -33,7 +33,7 @@ class EventsCards extends Component {
       longitude: concert.location[1].toString(),
       description: description
     };
-    fetch('http://localhost:3001/api/v1/shows', {
+    fetch('https://concert-tracker-api.herokuapp.com/api/v1/shows', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(favoriteConcert)
@@ -44,7 +44,7 @@ class EventsCards extends Component {
   }
 
   postShowToJoinsTable(concert) {
-    fetch(`http://localhost:3001/api/v1/users/${this.props.signedInUser.id}/users_shows/${concert[0].id}`, {
+    fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/${this.props.signedInUser.id}/users_shows/${concert[0].id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     })

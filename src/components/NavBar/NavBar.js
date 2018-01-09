@@ -25,7 +25,7 @@ class NavBar extends Component {
     if (!this.props.signedInUser.id) {
       this.handleModal();
     } else {
-      fetch(`http://localhost:3001/api/v1/users/${this.props.signedInUser.id}/favorite_bands`)
+      fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/${this.props.signedInUser.id}/favorite_bands`)
         .then(response => response.json())
         .then(parsed => {
           let bands = parsed.map( (bandObj) => {
@@ -45,7 +45,7 @@ class NavBar extends Component {
 
   fetchBandName(bandId) {
     return (
-      fetch(`http://localhost:3001/api/v1/bands/${bandId}`)
+      fetch(`https://concert-tracker-api.herokuapp.com/api/v1/bands/${bandId}`)
         .then(response => response.json())
         .catch(error => console.log(error))
     );
@@ -55,7 +55,7 @@ class NavBar extends Component {
     if (!this.props.signedInUser.id){
       this.handleModal();
     } else {
-      fetch(`http://localhost:3001/api/v1/users/${this.props.signedInUser.id}/favorite_shows`)
+      fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/${this.props.signedInUser.id}/favorite_shows`)
         .then(response => response.json())
         .then(parsed => {
           let shows = parsed.map( (showObj) => {
@@ -74,30 +74,38 @@ class NavBar extends Component {
 
   fetchShowInfo(showId) {
     return (
-      fetch(`http://localhost:3001/api/v1/shows/${showId}`)
+      fetch(`https://concert-tracker-api.herokuapp.com/api/v1/shows/${showId}`)
         .then(response => response.json())
         .catch(error => console.log(error))
     );
   }
 
   render () {
-    return (
-      <ul className='NavBar'>
+    return [
+
+      <ul className='NavBar' key='2'>
+        <h1 className='header-title' key='1'>
+          <Link to='/'>
+            Concert Tracker
+        </Link>
+        </h1>
         <li>
-          <button onClick={(event) => {
-            event.preventDefault();
-            this.fetchFavBands();
-          }}>
+          <button className='nav-button' 
+            onClick={(event) => {
+              event.preventDefault();
+              this.fetchFavBands();
+            }}>
             <Link to='/favorite-bands'>
               Favorite Bands
             </Link>
           </button>
         </li>
         <li>
-          <button onClick={(event) => {
-            event.preventDefault();
-            this.fetchFavShows();
-          }}>
+          <button className='nav-button' 
+            onClick={(event) => {
+              event.preventDefault();
+              this.fetchFavShows();
+            }}>
             <Link to='/favorite-shows'>
             Favorite Shows
             </Link>
@@ -106,7 +114,7 @@ class NavBar extends Component {
         {this.state.modalOpen && <SignInModal
           close={this.handleModal} />}
       </ul>
-    );
+    ];
   }
 }
 

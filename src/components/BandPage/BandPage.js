@@ -7,12 +7,10 @@ import PropTypes from 'prop-types';
 class BandPage extends Component {
 
   postFavoriteBand() {
-    console.log('post it!');
-    console.log(this.props.searchTerm);
     const newBand = {
       bandName: this.props.searchTerm
     };
-    fetch('http://localhost:3001/api/v1/bands', {
+    fetch('https://concert-tracker-api.herokuapp.com/api/v1/bands', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -26,13 +24,12 @@ class BandPage extends Component {
       })
       .then(parsed => {
         this.postBandtoJoinsTable(parsed);
-        console.log(parsed);
       })
       .catch(error => console.log(error));
   }
 
   postBandtoJoinsTable(band) {
-    fetch(`http://localhost:3001/api/v1/users/${this.props.signedInUser.id}/bands_users/${band[0].id}`, {
+    fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/${this.props.signedInUser.id}/bands_users/${band[0].id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'}
     })
@@ -56,7 +53,6 @@ class BandPage extends Component {
             {this.props.searchTerm}
           </h3>
           <button onClick={(event) => {
-            console.log('click!');
             event.preventDefault();
             this.postFavoriteBand();
           }}>Favorite</button>

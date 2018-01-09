@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setSearchBandResults, setSearchTerm } from '../../actions/index';
 import './SearchBar.css';
 import PropTypes from 'prop-types';
+import SignInSignUp from '../SignInSignUp/SignInSignUp';
 
 
 class SearchBar extends Component {
@@ -47,6 +48,7 @@ class SearchBar extends Component {
             SEARCH
           </Link>
         </button>
+        <SignInSignUp />
       </div>
     );
   }

@@ -18,10 +18,9 @@
     "dexie": "^2.0.1",
     "webpack": "^3.10.0"
   },
-  // "proxy": "http://localhost:3001",
   "scripts": {
     "start": "react-scripts start",
-    "build": "webpack --config ./webpack.config.js",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

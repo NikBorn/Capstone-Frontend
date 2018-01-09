@@ -31,7 +31,7 @@ class SignInSignUp extends Component  {
       name: result.user.displayName,
       email: result.user.email
     };
-    fetch('http://localhost:3001/api/v1/users', {
+    fetch('https://concert-tracker-api.herokuapp.com/api/v1/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser)
@@ -55,7 +55,7 @@ class SignInSignUp extends Component  {
   signIn() {
     auth.signInWithPopup(provider)
       .then((result) => {
-        fetch(`http://localhost:3001/api/v1/users/email/${result.user.email}`)
+        fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/email/${result.user.email}`)
           .then(response => {
             if (response.status === 200){
               this.signInUserToStore(response);
