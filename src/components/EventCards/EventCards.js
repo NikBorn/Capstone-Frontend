@@ -4,8 +4,22 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setFavoriteShows } from '../../actions/index';
+import SignInModal from '../SignInModal/SignInModal';
 
 class EventsCards extends Component {
+  constructor() {
+    super();
+    this.state = {
+      modalOpen: false
+    };
+    this.handleModal = this.handleModal.bind(this);
+  }
+
+  handleModal() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  }
 
   postFavoriteShow(concert){
     const venue = concert.entities === null ? "Not Available" : concert.entities.venues[0].name;
@@ -30,8 +44,6 @@ class EventsCards extends Component {
   }
 
   postShowToJoinsTable(concert) {
-    console.log(this.props.signedInUser)
-    console.log(concert)
     fetch(`http://localhost:3000/api/v1/users/${this.props.signedInUser.id}/users_shows/${concert[0].id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
@@ -65,9 +77,10 @@ class EventsCards extends Component {
         {this.props.signedInUser.id ? 
           <button className='tracker-button' onClick={() => this.addShowToFavorites(this.props.concert)}>Add to Tracker</button>
           :
-          <button className='tracker-button'>Sign In To Track</button>
+          <button className='tracker-button' onClick={this.handleModal} >Sign In To Track</button>
         }
-        
+        {this.state.modalOpen && <SignInModal
+          close={this.handleModal} />}
       </article>
     );
   }

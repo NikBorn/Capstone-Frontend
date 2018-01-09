@@ -2,36 +2,79 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import { connect } from 'react-redux';
-import { setFavoriteBands } from '../../actions';
+import { setFavoriteBands, setFavoriteShows } from '../../actions';
+import SignInModal from '../SignInModal/SignInModal';
 
 
 class NavBar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      modalOpen: false
+    };
+    this.handleModal = this.handleModal.bind(this);
+  }
+
+  handleModal() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  }
 
   fetchFavBands() {
-    console.log(this.props.signedInUser.id);
-    fetch(`http://localhost:3000/api/v1/users/${this.props.signedInUser.id}/favorite_bands`)
-      .then(response => response.json())
-      .then(parsed => {
-        console.log(parsed);
-        let bands = parsed.map(async (bandObj) => {
-          return await this.fetchBandName(bandObj.id);
-        });
-        console.log(bands);
-        return Promise.all(bands);
-      })
-      .then(res => {
-        console.log(res);
-        const bandObjs = res.map(band => {
-          return band[0];
-        });
-        this.props.setFavoriteBands(bandObjs);
-      })
-      .catch(error => console.log(error));
+    if (!this.props.signedInUser.id) {
+      this.handleModal();
+    } else {
+      fetch(`http://localhost:3000/api/v1/users/${this.props.signedInUser.id}/favorite_bands`)
+        .then(response => response.json())
+        .then(parsed => {
+          let bands = parsed.map( (bandObj) => {
+            return this.fetchBandName(bandObj.id);
+          });
+          return Promise.all(bands);
+        })
+        .then(res => {
+          const bandObjs = res.map(band => {
+            return band[0];
+          });
+          this.props.setFavoriteBands(bandObjs);
+        })
+        .catch(error => console.log(error));
+    }
   }
 
   fetchBandName(bandId) {
     return (
       fetch(`http://localhost:3000/api/v1/bands/${bandId}`)
+        .then(response => response.json())
+        .catch(error => console.log(error))
+    );
+  }
+
+  fetchFavShows() {
+    if (!this.props.signedInUser.id){
+      this.handleModal();
+    } else {
+      fetch(`http://localhost:3000/api/v1/users/${this.props.signedInUser.id}/favorite_shows`)
+        .then(response => response.json())
+        .then(parsed => {
+          let shows = parsed.map( (showObj) => {
+            return this.fetchShowInfo(showObj.showId);
+          });
+          return Promise.all(shows);
+        })
+        .then(res => {
+          const showObjs = res.map(show => {
+            this.props.setFavoriteShows(show[0]);
+          });
+        })
+        .catch(error => console.log(error));
+    }
+  }
+
+  fetchShowInfo(showId) {
+    return (
+      fetch(`http://localhost:3000/api/v1/shows/${showId}`)
         .then(response => response.json())
         .catch(error => console.log(error))
     );
@@ -51,10 +94,17 @@ class NavBar extends Component {
           </button>
         </li>
         <li>
-          <Link to='/favorite-shows'>
+          <button onClick={(event) => {
+            event.preventDefault();
+            this.fetchFavShows();
+          }}>
+            <Link to='/favorite-shows'>
             Favorite Shows
-          </Link>
+            </Link>
+          </button>
         </li>
+        {this.state.modalOpen && <SignInModal
+          close={this.handleModal} />}
       </ul>
     );
   }
@@ -70,6 +120,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setFavoriteBands: (userCoords) => {
       dispatch(setFavoriteBands(userCoords));
+    },
+    setFavoriteShows: (favoriteShow) => {
+      dispatch(setFavoriteShows(favoriteShow));
     }
   };
 };
