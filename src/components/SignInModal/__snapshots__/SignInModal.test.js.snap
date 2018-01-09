@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignInModal snapshot should always match the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SignInModal
+    close={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="inner-modal"
+>
+        <p
+                className="modal-text"
+        >
+                Please Sign In
+        </p>
+        <button
+                className="invoice-input"
+                onClick={[Function]}
+        >
+                Close
+        </button>
+</div>,
+      "className": "outer-modal",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <p
+            className="modal-text"
+>
+            Please Sign In
+</p>,
+          <button
+            className="invoice-input"
+            onClick={[Function]}
+>
+            Close
+</button>,
+        ],
+        "className": "inner-modal",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Please Sign In",
+            "className": "modal-text",
+          },
+          "ref": null,
+          "rendered": "Please Sign In",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Close",
+            "className": "invoice-input",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "Close",
+          "type": "button",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="inner-modal"
+>
+          <p
+                    className="modal-text"
+          >
+                    Please Sign In
+          </p>
+          <button
+                    className="invoice-input"
+                    onClick={[Function]}
+          >
+                    Close
+          </button>
+</div>,
+        "className": "outer-modal",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p
+              className="modal-text"
+>
+              Please Sign In
+</p>,
+            <button
+              className="invoice-input"
+              onClick={[Function]}
+>
+              Close
+</button>,
+          ],
+          "className": "inner-modal",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Please Sign In",
+              "className": "modal-text",
+            },
+            "ref": null,
+            "rendered": "Please Sign In",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Close",
+              "className": "invoice-input",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Close",
+            "type": "button",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
