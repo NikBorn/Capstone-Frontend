@@ -45,7 +45,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setSearchBandResults: (searchBandResults) => {
       dispatch(setSearchBandResults(searchBandResults));
+    },
+    setSearchTerm: (searchTerm) => {
+      dispatch(setSearchTerm(searchTerm));
     }
+  };
   };
 };
 
