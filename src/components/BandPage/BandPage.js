@@ -12,7 +12,7 @@ class BandPage extends Component {
     const newBand = {
       bandName: this.props.searchTerm
     };
-    fetch('http://localhost:3001/api/v1/bands', {
+    fetch('https://concert-tracker-api.herokuapp.com//api/v1/bands', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ class BandPage extends Component {
   }
 
   postBandtoJoinsTable(band) {
-    fetch(`http://localhost:3001/api/v1/users/${this.props.signedInUser.id}/bands_users/${band[0].id}`, {
+    fetch(`https://concert-tracker-api.herokuapp.com/api/v1/users/${this.props.signedInUser.id}/bands_users/${band[0].id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'}
     })
