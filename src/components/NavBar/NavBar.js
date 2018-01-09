@@ -81,8 +81,13 @@ class NavBar extends Component {
   }
 
   render () {
-    return (
-      <ul className='NavBar'>
+    return [
+      <h1 className='header-title' key='1'>
+        <Link to='/'>
+          Concert Tracker
+        </Link>
+      </h1>,
+      <ul className='NavBar' key='2'>
         <li>
           <button className='nav-button' 
             onClick={(event) => {
@@ -108,7 +113,7 @@ class NavBar extends Component {
         {this.state.modalOpen && <SignInModal
           close={this.handleModal} />}
       </ul>
-    );
+    ];
   }
 }
 

@@ -11,11 +11,7 @@ class Header extends Component {
   render() {
     return (
       <header className='header'>
-        <h1 className='header-title'>
-          <Link to='/'>
-            Concert Tracker
-          </Link>
-        </h1>
+
         <div className='header-content'>
           <NavBar />
           <SearchBar />
