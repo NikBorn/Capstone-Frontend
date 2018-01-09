@@ -26,6 +26,12 @@
     background-color: magenta;
     padding: 0 40px;
   }
+
+  .event-card {
+      width: 400px;
+      margin: 50px 25px;
+      background-color: magenta;
+  }
 }
 
 @media screen and (max-width: 910px) {
@@ -49,7 +55,7 @@
   }
 }
 
-@media screen and (max-width: 910px) {
+/* @media screen and (max-width: 910px) {
   .header-content {
     flex-direction: column;
   }
@@ -57,5 +63,5 @@
   li {
     margin: 6px 0
   }
-}
+} */
 
