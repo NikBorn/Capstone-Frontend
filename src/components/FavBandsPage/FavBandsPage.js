@@ -6,13 +6,13 @@ class FavBandsPage extends Component {
 
   render() {
     const favBands = this.props.favoriteBands.map(band=> {
-      return <FavBandCard key={band.id} bandName={band.bandName}/>
-    })
+      return <FavBandCard key={band.id} bandName={band.bandName}/>;
+    });
     return (
       <div>
         {favBands}
       </div>
-    )
+    );
   }
 }
 

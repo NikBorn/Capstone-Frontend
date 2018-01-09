@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 class BandPage extends Component {
 
   postFavoriteBand() {
-    console.log('post it!');
-    console.log(this.props.searchTerm);
     const newBand = {
       bandName: this.props.searchTerm
     };
@@ -26,7 +24,6 @@ class BandPage extends Component {
       })
       .then(parsed => {
         this.postBandtoJoinsTable(parsed);
-        console.log(parsed);
       })
       .catch(error => console.log(error));
   }
@@ -56,7 +53,6 @@ class BandPage extends Component {
             {this.props.searchTerm}
           </h3>
           <button onClick={(event) => {
-            console.log('click!');
             event.preventDefault();
             this.postFavoriteBand();
           }}>Favorite</button>
