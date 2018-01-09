@@ -36,5 +36,11 @@
   border-color: #5FC7EE;
 }
 
+@media screen and (max-width: 1030px) {
 
+  .event-card {
+    width: 360px;
+    margin: 50px 25px;
+  }
+}
 
