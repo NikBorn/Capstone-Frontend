@@ -24,7 +24,6 @@ class EventsContainer extends Component {
         longitude: position.coords.longitude
       });
       const localConcerts = await this.fetchLocalConcerts(position.coords.latitude, position.coords.longitude);
-      console.log('locationConcerts:', localConcerts);
       this.props.setLocationConcerts(localConcerts);
     });
   }
@@ -103,7 +102,6 @@ class EventsContainer extends Component {
   }
 
   render(){
-    console.log(this.props);
     const isLoading = this.props.locationConcerts.length ? 'loading-screen-hide' : 'loading-screen';
     return (
       <section className='events-container'>
@@ -144,7 +142,9 @@ EventsContainer.propTypes = {
   setUserLocation: PropTypes.func,
   setLocationConcerts: PropTypes.func,
   locationConcerts: PropTypes.array,
-  userLocation: PropTypes.object
+  userLocation: PropTypes.object,
+  location: PropTypes.objtect,
+  favoriteShows: PropTypes.array
 };
 
 

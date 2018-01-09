@@ -4,6 +4,8 @@ import './NavBar.css';
 import { connect } from 'react-redux';
 import { setFavoriteBands, setFavoriteShows } from '../../actions';
 import SignInModal from '../SignInModal/SignInModal';
+import PropTypes from 'prop-types';
+
 
 
 class NavBar extends Component {
@@ -133,6 +135,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setFavoriteShows(favoriteShow));
     }
   };
+};
+
+NavBar.propTypes = {
+  signedInUser: PropTypes.obj,
+  setFavoriteBands: PropTypes.func,
+  setFavoriteShows: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

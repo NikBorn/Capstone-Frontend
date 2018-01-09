@@ -17,7 +17,6 @@ class FavBandCard extends Component {
       .then((results) => {
         console.log(results.result.results);
         this.props.setSearchBandResults(results.result.results);
-        this.props.setSearchTerm(bandName);
       })
       .catch(error => console.log(error));
   }
@@ -29,7 +28,7 @@ class FavBandCard extends Component {
         <h3>{this.props.bandName}</h3>
         <button onClick={(event) => {
           event.preventDefault();
-          this.fetchSearchBand(this.props.bandName);
+          this.fetchSearchBand(this.props.bandName)
         }
         }>
           <Link to='/band-results'>
@@ -45,11 +44,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setSearchBandResults: (searchBandResults) => {
       dispatch(setSearchBandResults(searchBandResults));
-    },
-    setSearchTerm: (searchTerm) => {
-      dispatch(setSearchTerm(searchTerm));
     }
-  };
   };
 };
 
