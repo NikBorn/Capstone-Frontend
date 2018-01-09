@@ -8,6 +8,10 @@ import './SignInSignUp.css';
 
 
 class SignInSignUp extends Component  {
+  constructor() {
+    super();
+    this.signIn = this.signIn.bind(this);
+  }
   
   signInUserToStore (response) {
     response.json()
@@ -65,7 +69,7 @@ class SignInSignUp extends Component  {
 
   render() {
     return (
-      <button className='SignInSignUp-button' onClick={this.signIn.bind(this)}>Sign In</button>
+      <button className='SignInSignUp-button' onClick={this.signIn}>Sign In</button>
     );
   }
 }
