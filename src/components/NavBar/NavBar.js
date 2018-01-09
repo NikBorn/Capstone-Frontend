@@ -84,20 +84,22 @@ class NavBar extends Component {
     return (
       <ul className='NavBar'>
         <li>
-          <button onClick={(event) => {
-            event.preventDefault();
-            this.fetchFavBands();
-          }}>
+          <button className='nav-button' 
+            onClick={(event) => {
+              event.preventDefault();
+              this.fetchFavBands();
+            }}>
             <Link to='/favorite-bands'>
               Favorite Bands
             </Link>
           </button>
         </li>
         <li>
-          <button onClick={(event) => {
-            event.preventDefault();
-            this.fetchFavShows();
-          }}>
+          <button className='nav-button' 
+            onClick={(event) => {
+              event.preventDefault();
+              this.fetchFavShows();
+            }}>
             <Link to='/favorite-shows'>
             Favorite Shows
             </Link>

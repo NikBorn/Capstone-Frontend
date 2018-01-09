@@ -9,10 +9,14 @@
   padding: 0 100px;
 }
 
-.header button {
+.nav-button {
   border: none;
   background-color: transparent;
   color: rgb(244, 244, 248);
+}
+
+a {
+  font-size: 14px;
 }
 
 .header-title a {
