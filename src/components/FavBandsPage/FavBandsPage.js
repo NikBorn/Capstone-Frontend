@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FavBandCard from '../FavBandBard/FavBandCard';
+import FavBandCard from '../FavBandCard/FavBandCard';
 
 class FavBandsPage extends Component {
 
   render() {
-    console.log(this.props.favoriteBands)
     const favBands = this.props.favoriteBands.map(band=> {
       return <FavBandCard key={band.id} bandName={band.bandName}/>
     })
