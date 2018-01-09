@@ -17,59 +17,67 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <h1
-          className="header-title"
+      "children": <div
+        className="header-content"
 >
-          <Link
-                    replace={false}
-                    to="/"
-          >
-                    Concert Tracker
-          </Link>
-</h1>,
-        <div
+        <Connect(NavBar) />
+        <withRouter(Connect(SearchBar)) />
+</div>,
+      "className": "header",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Connect(NavBar) />,
+          <withRouter(Connect(SearchBar)) />,
+        ],
+        "className": "header-content",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+    "type": "header",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
           className="header-content"
 >
           <Connect(NavBar) />
           <withRouter(Connect(SearchBar)) />
-          <withRouter(Connect(SignInSignUp)) />
 </div>,
-      ],
-      "className": "header",
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <Link
-            replace={false}
-            to="/"
->
-            Concert Tracker
-</Link>,
-          "className": "header-title",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Concert Tracker",
-            "replace": false,
-            "to": "/",
-          },
-          "ref": null,
-          "rendered": "Concert Tracker",
-          "type": [Function],
-        },
-        "type": "h1",
+        "className": "header",
       },
-      Object {
+      "ref": null,
+      "rendered": Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -77,7 +85,6 @@ ShallowWrapper {
           "children": Array [
             <Connect(NavBar) />,
             <withRouter(Connect(SearchBar)) />,
-            <withRouter(Connect(SignInSignUp)) />,
           ],
           "className": "header-content",
         },
@@ -101,124 +108,9 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {},
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
         ],
         "type": "div",
       },
-    ],
-    "type": "header",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <h1
-            className="header-title"
->
-            <Link
-                        replace={false}
-                        to="/"
-            >
-                        Concert Tracker
-            </Link>
-</h1>,
-          <div
-            className="header-content"
->
-            <Connect(NavBar) />
-            <withRouter(Connect(SearchBar)) />
-            <withRouter(Connect(SignInSignUp)) />
-</div>,
-        ],
-        "className": "header",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <Link
-              replace={false}
-              to="/"
->
-              Concert Tracker
-</Link>,
-            "className": "header-title",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": "Concert Tracker",
-              "replace": false,
-              "to": "/",
-            },
-            "ref": null,
-            "rendered": "Concert Tracker",
-            "type": [Function],
-          },
-          "type": "h1",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <Connect(NavBar) />,
-              <withRouter(Connect(SearchBar)) />,
-              <withRouter(Connect(SignInSignUp)) />,
-            ],
-            "className": "header-content",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {},
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {},
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {},
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": "div",
-        },
-      ],
       "type": "header",
     },
   ],
