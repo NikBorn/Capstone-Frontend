@@ -66,6 +66,10 @@ a {
 }
 
 @media screen and (max-width: 825px) {
+  .header {
+    padding: 0 20px;
+  }
+
   .header-content {
     flex-direction: column;
   }
