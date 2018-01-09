@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FavBandCard from '../FavBandCard/FavBandCard';
+import PropTypes from 'prop-types';
+
 
 class FavBandsPage extends Component {
 
@@ -20,6 +22,10 @@ const mapStateToProps = (state) => {
   return {
     favoriteBands: state.favoriteBands
   };
+};
+
+FavBandsPage.propTypes = {
+ favoriteBands: PropTypes.array
 };
 
 export default connect(mapStateToProps, null)(FavBandsPage);
