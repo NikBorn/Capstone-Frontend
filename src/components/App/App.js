@@ -32,7 +32,7 @@ export default class App extends Component {
         />
         <Route exact path='/favorite-shows'
           render={() =>
-            <h1>FAVORITE SHOWS PAGE GOES HERE</h1>
+            <EventsContainer />
           }
         />
       </div>
