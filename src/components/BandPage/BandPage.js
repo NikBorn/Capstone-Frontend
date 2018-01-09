@@ -45,7 +45,7 @@ class BandPage extends Component {
       const venue = show.entities ? show.entities.venues[0].name : 'No venue name';
     
       return (
-        <EventCards title={show.title} venue={venue} start={show.start} key={show.id} />
+        <EventCards title={show.title} venue={venue} start={show.start} key={show.id} concert={show} />
       );
     });
 
