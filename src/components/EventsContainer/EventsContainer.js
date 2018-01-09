@@ -65,23 +65,34 @@ class EventsContainer extends Component {
   }
 
   buildEvents() {
-    return this.props.locationConcerts.map((concert, index) => {
-      if (concert.entities === null) {
-        return <EventCards 
-          title={concert.title} 
-          venue='No Venue Listed' 
-          start={concert.start} 
-          key={concert.id.concat(index)}
-          concert={concert}/>;
-      } else {
-        return <EventCards 
-          title={concert.title} 
-          venue={concert.entities.venues[0].name} 
-          start={concert.start} 
-          key={concert.id.concat(index)}
-          concert={concert}/>;
-      }
-    });
+    if (this.props.location.pathname === '/'){
+      return this.props.locationConcerts.map((concert, index) => {
+        if (concert.entities === null) {
+          return <EventCards 
+            title={concert.title} 
+            venue='No Venue Listed' 
+            start={concert.start} 
+            key={concert.id.concat(index)}
+            concert={concert}/>;
+        } else {
+          return <EventCards 
+            title={concert.title} 
+            venue={concert.entities.venues[0].name} 
+            start={concert.start} 
+            key={concert.id.concat(index)}
+            concert={concert}/>;
+        }
+      });
+    } else if (this.props.location.pathname === '/favorite-shows'){
+      return this.props.favoriteShows.map((concert, index) => {
+        return <EventCards
+          title={concert.title}
+          venue={concert.venue}
+          start={concert.date}
+          key={concert.apiKey.concat(index)}
+          concert={concert} />;
+      });
+    }
   }
 
   handleClick = async () => {
@@ -91,7 +102,7 @@ class EventsContainer extends Component {
   }
 
   render(){
-
+    console.log(this.props);
     const isLoading = this.props.locationConcerts.length ? 'loading-screen-hide' : 'loading-screen';
     return (
       <section className='events-container'>
@@ -123,7 +134,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userLocation: state.userLocation,
-    locationConcerts: state.locationConcerts
+    locationConcerts: state.locationConcerts,
+    favoriteShows: state.favoriteShows
   };
 };
 
