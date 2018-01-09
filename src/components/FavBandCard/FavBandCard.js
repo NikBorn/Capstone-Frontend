@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import phq from '../../utils/phq';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setSearchBandResults } from '../../actions/index';
+import { setSearchBandResults, setSearchTerm } from '../../actions/index';
 import PropTypes from 'prop-types';
 
 
 class FavBandCard extends Component {
-
-
 
   fetchSearchBand(bandName) {
     return phq.events.search(
@@ -50,7 +48,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
-// export default FavBandCard;
-export default withRouter(connect(null, mapDispatchToProps)(FavBandCard))
-// export default withRouter(connect(null, mapDispatchToProps)(FavBandCard);
+export default withRouter(connect(null, mapDispatchToProps)(FavBandCard));
