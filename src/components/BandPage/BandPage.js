@@ -12,7 +12,7 @@ class BandPage extends Component {
     const newBand = {
       bandName: this.props.searchTerm
     };
-    fetch('https://concert-tracker-api.herokuapp.com//api/v1/bands', {
+    fetch('https://concert-tracker-api.herokuapp.com/api/v1/bands', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
