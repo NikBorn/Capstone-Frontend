@@ -2,6 +2,7 @@ import { shallow, configure } from 'enzyme';
 import SignInModal from './SignInModal';
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
+/* eslint-disable no-undef */
 
 configure({ adapter: new Adapter() });
 
