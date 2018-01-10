@@ -7,7 +7,7 @@ import { setUserLocation, setLocationConcerts } from '../../actions/index';
 import phq from '../../utils/phq';
 import './EventsContainer.css';
 
-
+/* eslint-disable no-console */
 class EventsContainer extends Component {
 
   constructor() {
@@ -98,7 +98,6 @@ class EventsContainer extends Component {
   handleClick = async () => {
     const nextTen = await this.fetchNextTen();
     this.props.setLocationConcerts(nextTen);
-    // console.log(nextTen.result.results);
   }
 
   render(){

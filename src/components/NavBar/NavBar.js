@@ -6,7 +6,7 @@ import { setFavoriteBands, setFavoriteShows } from '../../actions';
 import SignInModal from '../SignInModal/SignInModal';
 import PropTypes from 'prop-types';
 
-
+/* eslint-disable no-console */
 
 class NavBar extends Component {
   constructor() {

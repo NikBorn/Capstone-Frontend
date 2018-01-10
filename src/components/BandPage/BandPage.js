@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import EventCards from '../EventCards/EventCards';
 import PropTypes from 'prop-types';
 
+/* eslint-disable no-console */
+
 class BandPage extends Component {
 
   postFavoriteBand() {
