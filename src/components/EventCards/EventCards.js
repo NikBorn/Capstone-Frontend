@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { setFavoriteShows } from '../../actions/index';
 import SignInModal from '../SignInModal/SignInModal';
 
+/* eslint-disable no-console */
+
 class EventsCards extends Component {
   constructor() {
     super();

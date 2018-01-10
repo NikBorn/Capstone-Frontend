@@ -7,6 +7,7 @@ import './SearchBar.css';
 import PropTypes from 'prop-types';
 import SignInSignUp from '../SignInSignUp/SignInSignUp';
 
+/* eslint-disable no-console */
 
 class SearchBar extends Component {
   constructor () {

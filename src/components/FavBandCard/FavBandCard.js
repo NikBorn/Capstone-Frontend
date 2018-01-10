@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setSearchBandResults, setSearchTerm } from '../../actions/index';
 import PropTypes from 'prop-types';
 
+/* eslint-disable no-console */
 
 class FavBandCard extends Component {
 
