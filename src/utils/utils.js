@@ -1,3 +1,6 @@
+
+/* eslint-disable */
+
 const fetchSearchBand = (bandName) => {
   return phq.events.search(
     {

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './SignInSignUp.css';
 
+/* eslint-disable no-console */
 
 class SignInSignUp extends Component  {
   constructor() {
